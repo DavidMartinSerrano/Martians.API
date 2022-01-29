@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+    db:
+        image: "mcr.microsoft.com/mssql/server"
+        environment:
+            SA_PASSWORD: "TestP@ssw0rd"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: Express
+        ports: 
+            - "1433:1433"
+
+    web:
+        build: .
+        ports:
+            - "8000:80"
+        depends_on:
+            - db
+        environment: 
+            ServerName: "db"
+            Database: "Robot"
+            UserName: "SA"
+            Password: "TestP@ssw0rd"
+      
+   

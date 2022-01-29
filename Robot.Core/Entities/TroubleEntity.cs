@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Robot.Core.Entities
+{
+    public class TroubleEntity
+    {
+        public TroubleEntity()
+        {
+
+        }
+        public string Id { get; set; }
+        public string Code { get; set; }
+    }
+}
