@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Robot.API": {
+    "Martians.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/robot",

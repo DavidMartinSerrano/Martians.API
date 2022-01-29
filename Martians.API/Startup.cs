@@ -47,11 +47,11 @@ namespace Martians.API
 
                 options.UseSqlServer(
                     $"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}",
-                    sqlServer => sqlServer.MigrationsAssembly("Robot.API"));
+                    sqlServer => sqlServer.MigrationsAssembly("Martians.API"));
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Robot.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Martians.API", Version = "v1" });
             });
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(CreateRobotHandler).GetTypeInfo().Assembly);
@@ -66,7 +66,7 @@ namespace Martians.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Robot.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Martians.API v1"));
             }
 
             app.UseHttpsRedirection();
