@@ -31,7 +31,17 @@ namespace Robot.Infrastructure.Repository.Base
             await _robotContext.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyList<T>> GetAllAsync()
+        public async Task DeleteAllAsync()
+        {
+            foreach (var entity in _robotContext.Robots)
+            {
+                _robotContext.Robots.Remove(entity);
+            }
+
+           await _robotContext.SaveChangesAsync();
+        }
+
+        public virtual async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _robotContext.Set<T>().ToListAsync();
         }
@@ -41,14 +51,17 @@ namespace Robot.Infrastructure.Repository.Base
             return await _robotContext.Set<T>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
             await Task.Run(() =>
             {
                 _robotContext.Set<T>().Attach(entity);
                 _robotContext.Entry(entity).State = EntityState.Modified;
             });
+
             await _robotContext.SaveChangesAsync();
+            return entity;
+
         }
     }
 }

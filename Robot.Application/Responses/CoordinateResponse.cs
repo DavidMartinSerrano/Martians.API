@@ -6,6 +6,15 @@ namespace Robot.Application.Responses
 {
     public class CoordinatesResponse
     {
+        public CoordinatesResponse()
+        {
+
+        }
+
+        /// <summary>
+        /// Id
+        /// </summary>
+        public Guid Id { get; set; }
 
         /// <summary>
         /// X coordinate.

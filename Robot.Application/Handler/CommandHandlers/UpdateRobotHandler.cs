@@ -12,15 +12,15 @@ using System.Threading.Tasks;
 
 namespace Robot.Application.Handler.CommandHandlers
 {
-    public class CreateRobotHandler : IRequestHandler<CreateRobotCommand, RobotResponse>
+    public class UpdateRobotHandler : IRequestHandler<UpdateRobotCommand, RobotResponse>
     {
-        private readonly IGenericRepository<RobotEntity> _robotRepo;
+        private readonly IRobotRepository _robotRepo;
 
-        public CreateRobotHandler(IGenericRepository<RobotEntity> robotRepository)
+        public UpdateRobotHandler(IRobotRepository robotRepository)
         {
             _robotRepo = robotRepository;
         }
-        public async Task<RobotResponse> Handle(CreateRobotCommand request, CancellationToken cancellationToken)
+        public async Task<RobotResponse> Handle(UpdateRobotCommand request, CancellationToken cancellationToken)
         {
           
                 var robotEntity = RobotMapper.Mapper.Map<RobotEntity>(request);
@@ -28,8 +28,8 @@ namespace Robot.Application.Handler.CommandHandlers
                 {
                     throw new ApplicationException("Issue with mapper");
                 }
-                var newRobot = await _robotRepo.AddAsync(robotEntity);
-                var robotResponse = RobotMapper.Mapper.Map<RobotResponse>(newRobot);
+                var updatedRobot = await _robotRepo.UpdateAsync(robotEntity);
+                var robotResponse = RobotMapper.Mapper.Map<RobotResponse>(updatedRobot);
                 return robotResponse;
         
         }

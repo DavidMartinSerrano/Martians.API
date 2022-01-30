@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Martians.API.Controllers
+namespace Robot.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -33,6 +33,24 @@ namespace Martians.API.Controllers
         public async Task<ActionResult<RobotResponse>> Post([FromBody] CreateRobotCommand command)
         {
             var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<RobotResponse>> UpdateRobots([FromBody] UpdateRobotCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<bool>> Delete()
+        {
+            var result = await _mediator.Send(new DeleteRobotsCommand());
             return Ok(result);
         }
     }

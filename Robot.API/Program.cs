@@ -9,23 +9,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Martians.API
+namespace Robot.API
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build().Migrate<RobotContext>();
+            //var host = CreateHostBuilder(args).Build().Migrate<RobotContext>();
+            var host = CreateHostBuilder(args).Build();
 
             // migrate the database.  Best practice = in Main, using service scope
             using (var scope = host.Services.CreateScope())
             {
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<RobotContext>();
-                    // for demo purposes, delete the database & migrate on startup so 
-                    // we can start with a clean slate
-                    context.Database.EnsureDeleted();
+                    var context = scope.ServiceProvider.GetService<RobotContext>();            
                     context.Database.EnsureCreated();
                 }
                 catch (Exception ex)

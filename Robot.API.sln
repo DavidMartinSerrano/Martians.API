@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Martians.API", "Martians.API\Martians.API.csproj", "{6FAD76D5-88FA-41F5-BB5D-57415CEB8C55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot.API", "Robot.API\Robot.API.csproj", "{6FAD76D5-88FA-41F5-BB5D-57415CEB8C55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot.Application", "Robot.Application\Robot.Application.csproj", "{275A748F-1EA2-4B14-B4A0-63D3FCF5147D}"
 EndProject

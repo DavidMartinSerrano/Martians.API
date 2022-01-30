@@ -20,8 +20,9 @@ using System.Threading.Tasks;
 using Robot.Core.Entities;
 using Robot.Application.Handler.CommandHandlers;
 using Robot.Infrastructure.Repository.Base;
+using Robot.Infrastructure.Repository;
 
-namespace Martians.API
+namespace Robot.API
 {
     public class Startup
     {
@@ -39,24 +40,24 @@ namespace Martians.API
             services.AddControllers();
             services.AddDbContext<RobotContext>(options =>
             {
-                var server = Configuration["ServerName"];
+                var server = Configuration["ServerName"] ?? "localhost";
                 var port = "1433";
-                var database = Configuration["Database"];
-                var user = Configuration["UserName"];
-                var password = Configuration["Password"];
+                var database = Configuration["Database"] ?? "Robot";
+                var user = "SA";
+                var password = Configuration["Password"] ?? "TestP@ssw0rd";
 
                 options.UseSqlServer(
                     $"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}",
-                    sqlServer => sqlServer.MigrationsAssembly("Martians.API"));
+                    sqlServer => sqlServer.MigrationsAssembly("Robot.API"));
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Martians.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Robot.API", Version = "v1" });
             });
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(CreateRobotHandler).GetTypeInfo().Assembly);
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddTransient<IGenericRepository<RobotEntity>, GenericRepository<RobotEntity>>();
+            services.AddTransient<IRobotRepository, RobotRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +67,7 @@ namespace Martians.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Martians.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Robot.API v1"));
             }
 
             app.UseHttpsRedirection();

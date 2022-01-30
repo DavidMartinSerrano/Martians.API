@@ -8,11 +8,8 @@ using System.Text;
 
 namespace Robot.Application.Commands
 {
-    public class UpdateRobotCommand : IRequest<RobotResponse>
+    public class DeleteRobotsCommand : IRequest<bool>
     {
-        public Guid Id { get; set; }
-        public CoordinatesEntity Coordinates { get; set; }
-
-        public Orientation Orientation { get; set; }
+       
     }
 }

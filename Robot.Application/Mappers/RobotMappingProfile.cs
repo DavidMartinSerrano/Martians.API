@@ -11,8 +11,11 @@ namespace Robot.Application.Mappers
     {
         public RobotMappingProfile()
         {
-            CreateMap<RobotResponse, Robot.Core.Entities.RobotEntity>().ReverseMap();
-            CreateMap<Robot.Core.Entities.RobotEntity, CreateRobotCommand>().ReverseMap();
+            CreateMap<Robot.Core.Entities.RobotEntity, RobotResponse>();
+            CreateMap<CreateRobotCommand, Robot.Core.Entities.RobotEntity>();
+            CreateMap<Robot.Core.Entities.CoordinatesEntity, CoordinatesResponse>();
+            CreateMap<Robot.Core.Entities.TroubleEntity, TroubleResponse>();
+
         }
     }
 }

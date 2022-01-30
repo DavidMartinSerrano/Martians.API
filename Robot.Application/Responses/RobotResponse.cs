@@ -7,6 +7,17 @@ namespace Robot.Application.Responses
 {
     public class RobotResponse
     {
+        public RobotResponse()
+        {
+            Troubles = new List<TroubleResponse>();
+
+        }
+
+        /// <summary>
+        /// Id
+        /// </summary>
+        public Guid Id { get; set; }
+
 
         /// <summary>
         /// Current coordinates.
@@ -21,7 +32,7 @@ namespace Robot.Application.Responses
         /// <summary>
         /// Reported troubles.
         /// </summary>
-        public IList<TroubleResponse> Troubles { get; } = new List<TroubleResponse>();
+        public List<TroubleResponse> Troubles { get; set; }
 
         /// <summary>
         /// Creates an instance.
@@ -30,6 +41,7 @@ namespace Robot.Application.Responses
         {
             Coordinates = coordinates;
             Orientation = orientation;
+            Troubles = new List<TroubleResponse>();
         }
 
 

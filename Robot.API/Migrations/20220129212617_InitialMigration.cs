@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Martians.API.Migrations
+namespace Robot.API.Migrations
 {
     public partial class InitialMigration : Migration
     {

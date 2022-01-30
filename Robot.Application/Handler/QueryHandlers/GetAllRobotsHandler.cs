@@ -14,15 +14,15 @@ namespace Robot.Application.Handler.QueryHandlers
 {
     public class GetAllRobotsHandler : IRequestHandler<GetAllRobotsQuery, List<RobotResponse>>
     {
-        private readonly IGenericRepository<RobotEntity> _robotRepo;
+        private readonly IRobotRepository _robotRepo;
 
-        public GetAllRobotsHandler(IGenericRepository<RobotEntity> robotRepo)
+        public GetAllRobotsHandler(IRobotRepository robotRepo)
         {
             _robotRepo = robotRepo;
         }
         public async Task<List<RobotResponse>> Handle(GetAllRobotsQuery request, CancellationToken cancellationToken)
-        {
-            return RobotMapper.Mapper.Map<List<RobotResponse>>(_robotRepo.GetAllAsync());
+        {       
+            return RobotMapper.Mapper.Map<List<RobotResponse>>(await _robotRepo.GetAllAsync());
         }
     }
 }

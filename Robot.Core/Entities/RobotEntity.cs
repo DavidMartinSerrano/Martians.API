@@ -12,7 +12,7 @@ namespace Robot.Core.Entities
     {
         public RobotEntity()
         {
-
+            Troubles = new List<TroubleEntity>();
         }
 
         public Guid Id { get; set; }
@@ -30,7 +30,7 @@ namespace Robot.Core.Entities
         /// <summary>
         /// Reported troubles.
         /// </summary>
-        public IList<TroubleEntity> Troubles { get; } = new List<TroubleEntity>();
+        public List<TroubleEntity> Troubles { get; set; }
 
         /// <summary>
         /// Creates an instance.
@@ -39,6 +39,7 @@ namespace Robot.Core.Entities
         {
             Coordinates = coordinates;
             Orientation = orientation;
+            Troubles = new List<TroubleEntity>();
         }
     }
 }

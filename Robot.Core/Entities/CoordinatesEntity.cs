@@ -14,6 +14,9 @@ namespace Robot.Core.Entities
 
         }
 
+        /// <summary>
+        /// Id
+        /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>

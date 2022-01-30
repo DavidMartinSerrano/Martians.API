@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Robot.Infrastructure.Data;
 
-namespace Martians.API.Migrations
+namespace Robot.API.Migrations
 {
     [DbContext(typeof(RobotContext))]
     [Migration("20220129212617_InitialMigration")]
