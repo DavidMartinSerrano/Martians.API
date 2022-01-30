@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Martians.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class RobotController : ControllerBase
     {
         private readonly IMediator _mediator;

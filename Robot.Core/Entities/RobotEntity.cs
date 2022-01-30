@@ -1,6 +1,7 @@
 ﻿using Robot.Core.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Robot.Core.Entities
 
         }
 
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Current coordinates.
